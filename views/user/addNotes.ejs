@@ -1,0 +1,30 @@
+<%- include('../../partials/user/header.ejs')%>
+
+
+
+    <section id="addNote">
+        <div class="container-fluid">
+            <div class="row mt-5 pt-5">
+                <div class="col-md-4">
+                    <%- include('../../partials/user/left.ejs')%>
+                </div>
+                <div class="form col-md-4">
+                    <h2>Upload Notes Here !!</h2>
+                    <p><%=mess%></p>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <label for="">Subject</label>
+                        <input type="text" name="subject" id=""  class="form-control">
+                        <label for="">Description</label>
+                        <textarea name="description" id="" class="form-control"></textarea>
+                        <label for="">Upload File</label>
+                        <input type="file" name="file" accept=".pdf,.doc,.docx,.jpg,.png" id=""  class="form-control">
+                        <button type="submit" class="btn btn-success form-control mt-2">Add</button>
+                    </form>
+                    <a href="/user/dashboard">Back to Dashboard</a>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

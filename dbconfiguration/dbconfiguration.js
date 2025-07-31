@@ -1,0 +1,5 @@
+require('dotenv').config()
+const mongoose=require('mongoose')
+mongoose.connect(`${process.env.DBURL}/${process.env.DBNAME}`)
+.then(()=>{console.log(`Connected to DB ${process.env.DBNAME}`)})
+.catch((error)=>{console.log(error.message)})

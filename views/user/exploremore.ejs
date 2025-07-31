@@ -1,0 +1,40 @@
+<%- include('../../partials/user/header.ejs')%>
+
+    <section id="Allnotes">
+        <h2 class="text-center mt-5 pt-5 mb-3" style="color: purple;">Explore More</h2>
+        <div class="container-fluid mt">
+            <div class="row">
+                <% if (userNotes.length > 0) { %>
+                    <% userNotes.forEach(user => { %>
+                        <div class="col-md-3">
+                            <div class="allnote-card mt-4">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= user.name %> (<%= user.role %>)</h5>
+                                    <h6 class="card-text">Branch: <%= user.branch %></h6>
+                                    <h6 class="card-text">Section: <%= user.section %></h6>
+                                    
+                                    <% if (user.notes.length > 0) { %>
+                                        <!-- <ul class="list-group"> -->
+                                            <% user.notes.forEach(note => { %>
+                                                <!-- <li class="list-group-item"> -->
+                                                    <h6>Subject: <%= note.subject %></h6>
+                                                    <h6>Description: <%= note.description %></h6> 
+                                                    <a href="/download/<%= note.file %>" target="_blank" class="btn btn-sm btn-primary">View</a>
+                                                <!-- </li> -->
+                                            <% }); %>
+                                        <!-- </ul> -->
+                                    <% } else { %>
+                                        <p class="text-muted">No notes available</p>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <p class="text-center">No users found from your branch.</p>
+                <% } %>
+                </div>
+        </div>
+    </section>
+</body>
+</html>

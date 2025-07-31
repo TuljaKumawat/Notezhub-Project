@@ -1,0 +1,50 @@
+<%- include('../../partials/user/header.ejs')%>
+
+<section id="addNote">
+    <div class="container-fluid">
+        <div class="row mt-5 pt-5">
+            <div class="col-md-4">
+                <%- include('../../partials/user/left.ejs')%>
+            </div>
+            <div class="form col-md-4">
+                <h2>Update Notes Here !!</h2>
+                <p><%= mess %></p>
+
+                <form action="" method="post" enctype="multipart/form-data">
+                    <label for="">Subject</label>
+                    <input type="text" name="subject" class="form-control" value="<%= data.subject %>">
+
+                    <label for="">Description</label>
+                    <textarea name="description" class="form-control me-4"><%= data.description %></textarea>
+
+                    <% if (data.file) { 
+                        let fileExtension = data.file.split('.').pop().toLowerCase();
+                    %>
+                    <div>
+                        <% if (['png', 'jpg', 'jpeg', 'gif', 'webp'].includes(fileExtension)) { %>
+                            <!-- Image Preview -->
+                            <img src="/download/<%= data.file %>" width="200px">
+                        <% } else if (fileExtension === 'pdf') { %>
+                            <!-- PDF Preview -->
+                            <embed src="/download/<%= data.file %>" width="200px" height="200px" type="application/pdf">
+                        <% } else { %>
+                            <!-- Other Files (DOC, DOCX, TXT, PPT) -->
+                            <p>Download File: <a href="/download/<%= data.file %>" target="_blank"><%= data.file %></a></p>
+                        <% } %>
+                    </div>
+                    <% } %>
+
+                    <label for="" class="ms-2">Note file</label>
+                    <input type="file" name="file" accept=".pdf,.doc,.docx,.jpg,.png" class="form-control">
+
+                    <button type="submit" class="btn btn-success form-control mt-2">Update</button>
+                </form>
+
+                <a href="/user/dashboard">Back to Dashboard</a>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
